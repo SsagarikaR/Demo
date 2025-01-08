@@ -1,66 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student registration form</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
     <div class="heading">
-        <h1>Student Registration Form</h1>
+      <h1>Student Registration Form </h1>
     </div>
-    <form >
+    <div class="form-div">
+    <form>
+      <div class="form-container">
+        <h2>fill the form to apply for the course  <i class="fa fa-book" ></i></h2>
         <fieldset>
-            <legend>Student information</legend>
-            <div>
-                <label for="name">Full name</label>
-                <input type="text" id="name">
+          <legend>Student information</legend>
+          <div  class="input-div">
+            <label for="name">Full name:</label>
+            <input type="text" id="name" class="input-box"/>
+          </div>
+          <div class="input-div">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="input-box"/>
+          </div class="input-div">
+          <div class="input-div">
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" class="input-box"/>
+          </div>
+          <div class="input-div">
+            <label for="DOB">Date of birth:</label>
+            <input type="date" id="DOB" class="input-box"/>
+          </div>
+          <div class="input-div gender-div">
+            <div class="gender">gender:</div>
+            <div class="input-box gender-box">
+              <div class="male"> 
+                <label for="male" > Male</label>
+                <input type="radio" name="gender" id="male" />
+              </div>
+              <div class="female">
+                <label for="female" >Female</label>
+                <input type="radio" name="gender" id="female" />
+              </div>
             </div>
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email">
-            </div>
-            <div>
-                <label for="contact">Contact</label>
-                <input type="text" id="contact">
-            </div>
-            <div>
-                <label for="city">city</label>
-                <select id="city">
-                    <option disabled selected value>-----select a district-----</option>
-                    <option value="B.Tech">Banglore</option>
-                    <option value="B.Pharma">Bhubaneswar</option>
-                    <option value="Nursing">jasmshed</option>
-                    <option value="D.pharma">D.Pharma</option>
-                    <option value="BCA">BCA</option>
-                </select>
-            </div>
-            <div>
-                <div>gender:</div>
-                <div>
-                    <label for="male">Male</label>
-                    <input type="radio" name="gender" id="male">
-                    <label for="female">Female</label>
-                    <input type="radio" name="gender" id="female">
-                </div>
-            </div>
+          </div>
         </fieldset>
         <fieldset>
-            <legend>Parents information</legend>
-            <div>
-                <label for="name">Fathers name</label>
-                <input type="text" id="name">
-            </div>
-            <div>
-                <label for="name">Mothers name</label>
-                <input type="text" id="name">
-            </div>
-            <div>
-                <label for="contact">Contact</label>
-                <input type="text" id="contact">
-            </div>
+          <legend>Parents information</legend>
+          <div class="input-div">
+            <label for="name">Fathers name:</label>
+            <input type="text" id="name" class="input-box"/>
+          </div>
+          <div class="input-div">
+            <label for="name">Mothers name:</label>
+            <input type="text" id="name" class="input-box"/>
+          </div>
+          <div class="input-div"> 
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" class="input-box"/>
+          </div>
+          <div class="input-div">
+            <label for="Acontact">Alternate contact:</label>
+            <input type="text" id="Acontact" class="input-box"/>
+          </div>
         </fieldset>
+        <fieldset>
+          <legend>Education information</legend>
+          <div class="input-div">
+            <label for="name">Fathers name:</label>
+            <input type="text" id="name" class="input-box"/>
+          </div>
+          <div class="input-div">
+            <label for="name">College:</label>
+            <input list="college" name="college" class="input-box"/>
+            <datalist id="college" class="input-box" >
+              <option value="DRIEMS"></option>
+              <option value="Silicon"></option>
+              <option value="KIIT"></option>
+              <option value="IIIT"></option>
+              <option value="IIT"></option>
+              <option value="ITER"></option>
+            </datalist>
+          </div >
+          <div class="input-div">
+            <label for="course">course:</label>
+            <select id="course" class="input-box">
+              <option disabled selected value>-----select a option-----</option>
+              <option value="B.Tech">B.Tech</option>
+              <option value="B.Pharma">B.Pharma</option>
+              <option value="Nursing">Nursing</option>
+              <option value="D.pharma">D.Pharma</option>
+              <option value="BCA">BCA</option>
+            </select>
+          </div>
+          <div class="input-div">
+            <label for="start-date">Start date:</label>
+            <input type="date" name="start-date" id="start-date" class="input-box"/>
+          </div>
+          <div class="input-div">
+            <label for="end-date">end date:</label>
+            <input type="date" name="end-date" id="end-date" class="input-box"/>
+          </div>
+        </fieldset>
+        <input type="submit" value="submit" class="submit">
+      </div>
     </form>
-</body>
+    </div>
+  </body>
 </html>

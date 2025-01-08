@@ -1,10 +1,175 @@
-.body{
-   max-width: 100vw;
+:root{
+   --light-orangebg:rgb(148, 148, 241);
+   --dark-orangebg:rgb(117, 117, 231);
+}
+body{
+   min-width: 100vw;
+   min-height: 100vh;
+   background-color:var(--light-orangebg);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 0;
+   overflow-x: hidden;
+   box-sizing: border-box;
+}
+.form-div{
+   width: 100%;
 }
 h1{
    text-align: center;
+   height: 10%;
+   font-size: 3rem;
+   /* color: #325fdd; */
+   background: linear-gradient( blue,rgb(6, 6, 150),rgb(48, 48, 170)); 
+   -webkit-text-fill-color: transparent; 
+   background-clip: text; 
 }
 form{
     width: 75%;
+    background-color: var(--dark-orangebg);
     margin: auto;
+    box-shadow: 0px 0px 10px 4px;
+    min-height: 90%;
+    padding: 0;
+}
+h2{
+   padding: 0.5rem 1rem 0;
+   margin: 0;
+   font-size: 2rem;
+   text-decoration: underline;
+}
+.form-container{
+   padding: 0 1rem 1rem;
+}
+fieldset{
+   width: 75%;
+   margin: 1rem;
+   padding: 1rem;
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem;
+
+}
+legend{
+   font-size: 1.5rem;
+   font-weight: 600;
+}
+label,.gender{
+   font-size: 1.5rem;
+}
+.input-div{ 
+   width: 100%;
+}
+.input-div label{
+   display: inline-block;
+   width: 30%;
+}
+.input-box{ 
+   padding: 0.5rem;
+   width: 60%;
+   outline: none;
+   border-radius: 0.6rem;
+   background-color: rgb(212, 205, 205);
+   border: none;
+}
+.gender-div {
+   display: flex;
+}
+.gender-div .gender{
+   width: 30%;
+}
+.male,.female{
+   width: 35%;
+}
+.male label,.female label{
+   font-size: 1.2rem;
+}
+.gender-box{
+   display: flex;
+   background-color: inherit;
+}
+.submit{
+   margin: 0 1rem ;
+   width: 10rem;
+  padding: 10px 10px;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border:none;
+  background-color: rgb(109, 109, 241);
+  border:black;
+  box-shadow: 0 0 3px 4px #524949;
+  cursor: pointer;
+}
+.submit:hover{
+   background-color: rgb(10, 10, 124);
+}
+@media screen and (max-width:1200px){
+   form{
+      width: 80%;
+   }
+   fieldset{
+      width: 80%;
+   }
+   .male,.female{
+      width: 50%;
+   }
+   .male label,.female label{
+      width: 50%;
+   }
+}
+
+@media screen  and (max-width:700px){
+   body{
+      background-color: var(--dark-orangebg);
+   }
+   
+   form{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: none;
+   }
+   h1{
+      font-size: 2.8rem;
+   }
+   h2{
+      font-size: 2rem;
+      padding: 0 0 1rem;
+   }
+   .form-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+
+   fieldset{
+      width: 100%;
+   }
+}
+@media screen and (max-width:580px){
+   h1{
+      font-size: 2.5rem;
+   }
+   h2{
+      font-size: 1.6rem;
+   }
+   fieldset{
+      width: 100%;
+   }
+}
+@media screen and (max-width:580px){
+   h1{
+      font-size: 2.4rem;
+   }
+   .form-container{
+      width: 100%;
+   }
+   fieldset{
+      width: 83%;
+   }
 }
