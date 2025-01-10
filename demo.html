@@ -11,38 +11,58 @@
     <div class="heading">
       <h1>Student Registration Form </h1>
     </div>
-    <div class="form-div">
-    <form>
+    <div class="body-container">
+    <form onsubmit="return ">
       <div class="form-container">
+        <div class="global-error"></div>
         <h2>fill the form to apply for the course  <i class="fa fa-book" ></i></h2>
         <fieldset>
           <legend>Student information</legend>
           <div  class="input-div">
-            <label for="name">Full name:</label>
-            <input type="text" id="name" class="input-box"/>
+            <label for="name">Full name: <span class="required">*</span></label>
+            <input type="text" id="name" class="input-box require"/>
+            <!-- <div class="fullName-error"></div> -->
           </div>
           <div class="input-div">
-            <label for="email">Email:</label>
-            <input type="email" id="email" class="input-box"/>
+            <label for="email">Email: <span class="required">*</span></label>
+            <input type="text" id="email" class="input-box email require"/>
           </div class="input-div">
           <div class="input-div">
-            <label for="contact">Contact:</label>
-            <input type="text" id="contact" class="input-box"/>
+            <label for="contact">Contact: <span class="required">*</span></label>
+            <input type="text" id="contact" class="input-box contact require"/>
+          </div>
+          <div class="input-div">
+            <label for="State">State:</label>
+            <select id="State" class="input-box">
+              <option disabled selected value>-----select your state-----</option>
+              <option value="AndhraPradesh">Andhra Pradesh</option>
+              <option value="ArunachalPradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Odisha">Odisha</option>
+            </select>
+          </div>
+          <div class="input-div">
+            <label for="City">City</label>
+            <select id="City" class="input-box">
+              <option disabled selected value class="City">-----select your city-----</option>
+            </select>
           </div>
           <div class="input-div">
             <label for="DOB">Date of birth:</label>
             <input type="date" id="DOB" class="input-box"/>
           </div>
           <div class="input-div gender-div">
-            <div class="gender">gender:</div>
-            <div class="input-box gender-box">
+            <div class="gender">gender: <span class="required">*</span></div>
+            <div class="input-box gender-box ">
               <div class="male"> 
                 <label for="male" > Male</label>
-                <input type="radio" name="gender" id="male" />
+                <input type="radio" name="gender" id="male" class="require"/>
               </div>
               <div class="female">
                 <label for="female" >Female</label>
-                <input type="radio" name="gender" id="female" />
+                <input type="radio" name="gender" id="female" class="require"/>
               </div>
             </div>
           </div>
@@ -50,16 +70,12 @@
         <fieldset>
           <legend>Parents information</legend>
           <div class="input-div">
-            <label for="name">Fathers name:</label>
-            <input type="text" id="name" class="input-box"/>
-          </div>
-          <div class="input-div">
-            <label for="name">Mothers name:</label>
-            <input type="text" id="name" class="input-box"/>
+            <label for="fathers-name">Father's name: <span class="required">*</span></label>
+            <input type="text" id="fathers-name" class="input-box require"/>
           </div>
           <div class="input-div"> 
-            <label for="contact">Contact:</label>
-            <input type="text" id="contact" class="input-box"/>
+            <label for="contact">Contact: <span class="required">*</span></label>
+            <input type="text" id="contact" class="input-box  contact require"/>
           </div>
           <div class="input-div">
             <label for="Acontact">Alternate contact:</label>
@@ -69,24 +85,20 @@
         <fieldset>
           <legend>Education information</legend>
           <div class="input-div">
-            <label for="name">Fathers name:</label>
-            <input type="text" id="name" class="input-box"/>
-          </div>
-          <div class="input-div">
-            <label for="name">College:</label>
-            <input list="college" name="college" class="input-box"/>
+            <label for="name">College: <span class="required">*</span></label>
+            <input list="college" name="college" class="input-box require"/>
             <datalist id="college" class="input-box" >
-              <option value="DRIEMS"></option>
-              <option value="Silicon"></option>
-              <option value="KIIT"></option>
-              <option value="IIIT"></option>
-              <option value="IIT"></option>
-              <option value="ITER"></option>
+              <option value="DRIEMS">DRIEMS</option>
+              <option value="Silicon">Silicon</option>
+              <option value="KIIT">KIIT</option>
+              <option value="IIIT">IIIT</option>
+              <option value="IIT">IIT</option>
+              <option value="ITER">ITER</option>
             </datalist>
           </div >
           <div class="input-div">
-            <label for="course">course:</label>
-            <select id="course" class="input-box">
+            <label for="course">Course: <span class="required">*</span></label>
+            <select id="course" class="input-box require">
               <option disabled selected value>-----select a option-----</option>
               <option value="B.Tech">B.Tech</option>
               <option value="B.Pharma">B.Pharma</option>
@@ -100,13 +112,27 @@
             <input type="date" name="start-date" id="start-date" class="input-box"/>
           </div>
           <div class="input-div">
-            <label for="end-date">end date:</label>
+            <label for="end-date">End date:</label>
             <input type="date" name="end-date" id="end-date" class="input-box"/>
           </div>
         </fieldset>
         <input type="submit" value="submit" class="submit">
       </div>
     </form>
+    <div class="table-container">
+      <h2 >Students's Data</h2>
+    <table>
+      <tr>
+        <th>Full name</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>College</th>
+        <th>Course</th>
+        <th>Action</th>
+      </tr>
+    </table>
     </div>
+  </div>
+    <script src="./demo.js"></script>
   </body>
 </html>
