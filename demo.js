@@ -72,6 +72,14 @@ state.addEventListener("input",(e)=>{
             City.appendChild(option1);
         })
       }
+      else if(e.target.value==="Odisha"){
+        city.Odisha.forEach((option)=>{
+            const option1=document.createElement("option");
+            option1.innerHTML=option;
+            option1.value=option;
+            City.appendChild(option1);
+        })
+      }
 })
 
 Input.forEach((input)=>{
