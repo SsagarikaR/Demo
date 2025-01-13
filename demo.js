@@ -18,8 +18,11 @@ const college=document.getElementById("College");
 const course=document.getElementById("course");
 const start_date=document.getElementById("start-date");
 const end_date=document.getElementById("end-date");
-const submit_text=document.getElementsByClassName("submit-text");
+const submit_text=document.querySelector(".submit-text");
 const body_container=document.querySelector(".body-container");
+const delete_input=document.querySelector(".delete-input");
+const delete_error=document.querySelector(".delete-error");
+var editRow_id="";
 
 const city={
     AndhraPradesh:["Vijaywada","Tirupati","Anantapur"],
@@ -71,6 +74,11 @@ state.addEventListener("input",(e)=>{
       }
 })
 
+Input.forEach((input)=>{
+    input.addEventListener("focusin",()=>{
+    submit_text.innerHTML="";
+})
+})
 
 required.forEach((require)=>{
     require.addEventListener('focusout',function(e){
@@ -83,7 +91,7 @@ required.forEach((require)=>{
         }
         else if(require.classList.contains("email")){
             const emailPattern=validEMail(e.target.value);
-            // console.log(emailPattern,"patternpa")
+            console.log(emailPattern,"patternpa")
             if(!emailPattern){
                 addErrorNode(paret_div,"email is not in valid format")
             }
@@ -101,48 +109,28 @@ required.forEach((require)=>{
 })
 
 
-let addData=true;
-submit.addEventListener('click',(e)=>{
 
+submit.addEventListener('click',(e)=>{
+    let addData=true;
     e.preventDefault();
     required.forEach((require)=>{ 
-        const paret_div=require.closest(".input-div");
-        if(paret_div.children[2]){paret_div.removeChild(paret_div.children[2]);}
-        if(require.value.trim()===""){
-            addErrorNode(paret_div,"this value can't be empty");
-            addData=false;
-        }
-        else if(require.classList.contains("email")){
-            const emailPattern=validEMail(email.value);
-            console.log(emailPattern,"pattern")
-            if(!emailPattern){
-                addErrorNode(paret_div,"email is not in valid format")
-                addData=false;
-            }
-        }
-        else if(require.classList.contains("contact")){
-            const contactPattern=validPhone(contact.value);
-            if(!contactPattern){
-                addErrorNode(paret_div,"contact is not in valid format")
-                addData=false;
-            }
-        }
-        else{
-           console.log("");
-        }
+        addData=checkRequire(require,addData);
     })
     const gender=document.querySelectorAll("input[type=radio]")
     const paret_div=gender[0].closest(".input-div");
-    console.log(gender);
-    console.log(gender[0].checked);
-    console.log(gender[1].checked);
+    // console.log(gender);
+    // console.log(gender[0].checked);
+    // console.log(gender[1].checked);
     if(paret_div.children[2]){paret_div.removeChild(paret_div.children[2]);}
     if(!(gender[0].checked || gender[1].checked) ){
         addErrorNode(paret_div,"this value can't be empty");
         addData=false;
     }
+    else{
+        addData=true;
+    }
 
-    console.log(addData)
+    console.log(addData,"addData");
     if(addData){
         submit_text.innerHTML="Your data is submitted";
         const table=document.querySelector("table");
@@ -198,12 +186,9 @@ submit.addEventListener('click',(e)=>{
             const delete_id=delete_row.id;
             deleteRow_id=delete_id;
             delete_modal.style.zIndex="1";
+            delete_modal.style.display="flex"
             body_container.style.zIndex="-1";
             body_container.style.opacity="50%";
-            // console.log(delete_id);
-            // delete form_Data[delete_id];
-            // console.log(form_Data);
-            // delete_row.remove();
         })
     })
     
@@ -211,19 +196,28 @@ submit.addEventListener('click',(e)=>{
         e.preventDefault();
         delete_modal.style.zIndex="-1";
         body_container.style.zIndex="1";
+        delete_modal.style.display="none"
         body_container.style.opacity="100%";
     })
     delete_confirm.addEventListener("click",(e)=>{
         e.preventDefault();
-        delete form_Data[deleteRow_id];
-        const delete_row=document.getElementById(deleteRow_id);
-        console.log(form_Data);
-        delete_row.remove();
-        delete_modal.style.zIndex="-1";
-        body_container.style.zIndex="1";
-        body_container.style.opacity="100%";
+        if(delete_input.value=="Delete")
+        {
+             delete_error.style.display="none";
+            delete form_Data[deleteRow_id];
+            const delete_row=document.getElementById(deleteRow_id);
+            console.log(form_Data);
+            delete_row.remove();
+            delete_modal.style.zIndex="-1";
+            body_container.style.zIndex="1";
+            delete_modal.style.display="none"
+            body_container.style.opacity="100%";
+        }
+        else{
+           delete_error.style.display="block";
+        }
+       
     })
-    var editRow_id="";
     const edit_button=document.querySelectorAll(".edit");
     edit_button.forEach((edit)=>{
         edit.addEventListener("click",(e)=>{
@@ -245,95 +239,102 @@ submit.addEventListener('click',(e)=>{
             course.value=form_Data[edit_id].course;
             start_date.value=form_Data[edit_id].start_date;
             end_date.value=form_Data[edit_id].end_date;
-            edit.style.color="blue";
             submit.style.display="none";
             update.style.display="inline"
             
         })
     })
-    let updateData=true;
-    update.addEventListener("click",(e)=>{
-        e.preventDefault();
-        required.forEach((require)=>{
-            console.log(require.value);
-            const paret_div=require.closest(".input-div");
-            if(paret_div.children[2]){paret_div.removeChild(paret_div.children[2]);}
-            if(require.value.trim()===""){
-                addErrorNode(paret_div,"this value can't be empty");
-                updateData=false;
-            }
-            else if(require.classList.contains("email")){
-                const emailPattern=validEMail(email.value);
-                console.log(emailPattern,"pattern")
-                if(!emailPattern){
-                    addErrorNode(paret_div,"email is not in valid format")
-                    updateData=false;
-                }
-            }
-            else if(require.classList.contains("contact")){
-                const contactPattern=validPhone(contact.value);
-                if(!contactPattern){
-                    addErrorNode(paret_div,"contact is not in valid format")
-                    updateData=false;
-                }
-            }
-            else{
-               console.log("");
-            }
-        })
-        const gender=document.querySelectorAll("input[type=radio]")
-        const paret_div=gender[0].closest(".input-div");
-        // console.log(gender);
-        // console.log(gender[0].checked);
-        // console.log(gender[1].checked);
-        if(paret_div.children[2]){paret_div.removeChild(paret_div.children[2]);}
-        if(!(gender[0].checked || gender[1].checked) ){
-            addErrorNode(paret_div,"this value can't be empty");
-            updateData=false;
-        }
-        console.log(updateData,"update");
-        if(updateData){
-            const update_row=document.getElementById(editRow_id);
-            submit_text.innerHTML="Your data is updated";
-            update_row.children[0].innerHTML=full_name.value;
-            update_row.children[1].innerHTML=email.value;
-            update_row.children[2].innerHTML=contact.value;
-            update_row.children[3].innerHTML=college.value;
-            update_row.children[4].innerHTML=course.value;
-            form_Data[editRow_id]={
-                full_name:full_name.value,
-                email:email.value,
-                contact:contact.value,
-                state:state.value,
-                city:City.value,
-                DOB:DOB.value,
-                gender:gender[0].checked?"male":"female",
-                fathers_name:fathers_name.value,
-                P_contact:P_contact.value,
-                A_contact:A_contact.value,
-                college:college.value,
-                course:course.value,
-                start_date:start_date.value,
-                end_date:end_date.value
-            }
-            console.log(form_Data);
-            Input.forEach((input)=>{
-                input.value="";
-            })
-            state.value="";
-            City.value="";
-            course.value="";
-            gender.forEach((field)=>{
-                field.checked=false;
-            })
-            submit.style.display="inline";
-            update.style.display="none"
-        }
-        document.querySelector("html").scrollTop=0;
-    })
+   
 })
 
+update.addEventListener("click",(e)=>{
+    e.preventDefault();
+    let updateData=true;
+    required.forEach((require)=>{
+        console.log(require.value);
+        updateData=checkRequire(require,updateData)
+    })
+    const gender=document.querySelectorAll("input[type=radio]")
+    const paret_div=gender[0].closest(".input-div");
+    // console.log(gender);
+    // console.log(gender[0].checked);
+    // console.log(gender[1].checked);
+    if(paret_div.children[2]){paret_div.removeChild(paret_div.children[2]);}
+    if(!(gender[0].checked || gender[1].checked) ){
+        addErrorNode(paret_div,"this value can't be empty");
+        updateData=false;
+    }
+    else{
+        updateData=true;
+    }
+    console.log(updateData,"update");
+    if(updateData){
+        const update_row=document.getElementById(editRow_id);
+        submit_text.innerHTML="Your data is updated";
+        update_row.children[0].innerHTML=full_name.value;
+        update_row.children[1].innerHTML=email.value;
+        update_row.children[2].innerHTML=contact.value;
+        update_row.children[3].innerHTML=college.value;
+        update_row.children[4].innerHTML=course.value;
+        form_Data[editRow_id]={
+            full_name:full_name.value,
+            email:email.value,
+            contact:contact.value,
+            state:state.value,
+            city:City.value,
+            DOB:DOB.value,
+            gender:gender[0].checked?"male":"female",
+            fathers_name:fathers_name.value,
+            P_contact:P_contact.value,
+            A_contact:A_contact.value,
+            college:college.value,
+            course:course.value,
+            start_date:start_date.value,
+            end_date:end_date.value
+        }
+        console.log(form_Data);
+        Input.forEach((input)=>{
+            input.value="";
+        })
+        state.value="";
+        City.value="";
+        course.value="";
+        gender.forEach((field)=>{
+            field.checked=false;
+        })
+        submit.style.display="inline";
+        update.style.display="none"
+    }
+    document.querySelector("html").scrollTop=0;
+})
 
+function checkRequire(require,addData){
+    const paret_div=require.closest(".input-div");
+        if(paret_div.children[2]){paret_div.removeChild(paret_div.children[2]);}
+        if(require.value.trim()===""){
+            addErrorNode(paret_div,"this value can't be empty");
+            addData=false;
+        }
+        else if(require.classList.contains("email")){
+            const emailPattern=validEMail(email.value);
+            console.log(emailPattern,"pattern")
+            if(!emailPattern){
+                addErrorNode(paret_div,"email is not in valid format")
+                addData=false;
+            }
+        }
+        else if(require.classList.contains("contact")){
+            const contactPattern=validPhone(contact.value);
+            if(!contactPattern){
+                addErrorNode(paret_div,"contact is not in valid format")
+                addData=false;
+            }
+        }
+        else{
+           addData=true;
+        }
+        return addData;
+}
 function addErrorNode(paret_div,message){
     const node=document.createElement("div");
     node.classList.add("error");
