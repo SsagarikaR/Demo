@@ -10,6 +10,7 @@
   <body>
     <div class="heading">
       <h1>Student Registration Form </h1>
+      <h2 class="submit-text"></h2>
     </div>
     <div class="body-container">
     <form onsubmit="return ">
@@ -21,7 +22,6 @@
           <div  class="input-div">
             <label for="name">Full name: <span class="required">*</span></label>
             <input type="text" id="name" class="input-box require"/>
-            <!-- <div class="fullName-error"></div> -->
           </div>
           <div class="input-div">
             <label for="email">Email: <span class="required">*</span></label>
@@ -58,11 +58,11 @@
             <div class="input-box gender-box ">
               <div class="male"> 
                 <label for="male" > Male</label>
-                <input type="radio" name="gender" id="male" class="require"/>
+                <input type="radio" name="gender" id="male" />
               </div>
               <div class="female">
                 <label for="female" >Female</label>
-                <input type="radio" name="gender" id="female" class="require"/>
+                <input type="radio" name="gender" id="female" />
               </div>
             </div>
           </div>
@@ -74,8 +74,8 @@
             <input type="text" id="fathers-name" class="input-box require"/>
           </div>
           <div class="input-div"> 
-            <label for="contact">Contact: <span class="required">*</span></label>
-            <input type="text" id="contact" class="input-box  contact require"/>
+            <label for="Pcontact">Contact: <span class="required">*</span></label>
+            <input type="text" id="Pcontact" class="input-box  contact require"/>
           </div>
           <div class="input-div">
             <label for="Acontact">Alternate contact:</label>
@@ -86,7 +86,7 @@
           <legend>Education information</legend>
           <div class="input-div">
             <label for="name">College: <span class="required">*</span></label>
-            <input list="college" name="college" class="input-box require"/>
+            <input list="college" id="College" name="college" class="input-box require"/>
             <datalist id="college" class="input-box" >
               <option value="DRIEMS">DRIEMS</option>
               <option value="Silicon">Silicon</option>
@@ -116,7 +116,8 @@
             <input type="date" name="end-date" id="end-date" class="input-box"/>
           </div>
         </fieldset>
-        <input type="submit" value="submit" class="submit">
+        <button  class="submit">Submit</button>
+        <button class="update">Update</button>
       </div>
     </form>
     <div class="table-container">
@@ -131,6 +132,13 @@
         <th>Action</th>
       </tr>
     </table>
+    </div>
+  </div>
+  <div class="delete-modal"> 
+    <div class="delete-message">Are you sure you want to delete this field?</div>
+    <div class="delete-action">
+      <div class="delete-cancel">Cancel</div>
+      <div class="delete-confirm">Confirm</div>
     </div>
   </div>
     <script src="./demo.js"></script>
