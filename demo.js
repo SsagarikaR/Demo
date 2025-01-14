@@ -1,29 +1,29 @@
-const required=document.querySelectorAll('.require');
-const submit=document.querySelector(".submit");
-const Input=document.querySelectorAll("input");
-const update =document.querySelector(".update");
-const delete_modal=document.querySelector(".delete-modal");
-const delete_cancel=document.querySelector(".delete-cancel");
-const delete_confirm=document.querySelector(".delete-confirm");
-const full_name=document.getElementById("name");
-const email=document.querySelector(".email");
-const contact=document.getElementById("contact");
-const state=document.getElementById("State");
-const City=document.getElementById("City");
-const DOB=document.getElementById("DOB");
-const fathers_name=document.getElementById("fathers-name");
-const P_contact=document.getElementById("Pcontact");
-const A_contact=document.getElementById("Acontact");
-const college=document.getElementById("College");
-const course=document.getElementById("course");
-const start_date=document.getElementById("start-date");
-const end_date=document.getElementById("end-date");
-const submit_text=document.querySelector(".submit-text");
-const body_container=document.querySelector(".body-container");
-const delete_input=document.querySelector(".delete-input");
-const delete_error=document.querySelector(".delete-error");
+const required=$('.require');
+const submit=$(".submit");
+const Input=$("input");
+const update =$(".update");
+const delete_modal=$(".delete-modal");
+const delete_cancel=$(".delete-cancel");
+const delete_confirm=$(".delete-confirm");
+const full_name=$("name");
+const email=$(".email");
+const contact=$("#contact");
+const state=$("#State");
+const City=$("#City");
+const DOB=$("#DOB");
+const fathers_name=$("#fathers-name");
+const P_contact=$("#Pcontact");
+const A_contact=$("#Acontact");
+const college=$("#College");
+const course=$("#course");
+const start_date=$("#start-date");
+const end_date=$("#end-date");
+const submit_text=$(".submit-text");
+const body_container=$(".body-container");
+const delete_input=$(".delete-input");
+const delete_error=$(".delete-error");
 var editRow_id="";
-
+console.log($);
 const city={
     AndhraPradesh:["Vijaywada","Tirupati","Anantapur"],
     ArunachalPradesh:["Namsal","Roing","Ziro"],
@@ -141,17 +141,45 @@ submit.addEventListener('click',(e)=>{
     console.log(addData,"addData");
     if(addData){
         submit_text.innerHTML="Your data is submitted";
-        const table=document.querySelector("table");
-        const newRow=table.insertRow();
+        const table=document.querySelector(".table");
+        const newRow=document.createElement("div");
+        newRow.setAttribute("class","tr");
         newRow.setAttribute("id",row_id);
-        newRow.insertCell().innerHTML=full_name.value;
-        newRow.insertCell().innerHTML=email.value;
-        newRow.insertCell().innerHTML=contact.value;
-        newRow.insertCell().innerHTML=college.value;
-        newRow.insertCell().innerHTML=course.value;
-        const actionCell=newRow.insertCell()
-        actionCell.innerHTML="<i class='fa fa-pencil-square-o edit' aria-hidden='true'></i> <i class='fa fa-trash delete' aria-hidden='true'></i>";
-        actionCell.classList.add("action"+row_id);
+        table.appendChild(newRow);
+        const newCell1=document.createElement("div");
+        newCell1.innerHTML=full_name.value
+        newCell1.setAttribute("class","td");
+        newRow.appendChild(newCell1);
+        const newCell2=document.createElement("div");
+        newCell2.innerHTML=email.value
+        newCell2.setAttribute("class","td");
+        newRow.appendChild(newCell2);
+        const newCell3=document.createElement("div");
+        newCell3.innerHTML=contact.value
+        newCell3.setAttribute("class","td");
+        newRow.appendChild(newCell3);
+        const newCell4=document.createElement("div");
+        newCell4.innerHTML=college.value
+        newCell4.setAttribute("class","td");
+        newRow.appendChild(newCell4);
+        const newCell5=document.createElement("div");
+        newCell5.innerHTML=course.value
+        newCell5.setAttribute("class","td");
+        newRow.appendChild(newCell5);
+        // const newRow=table.insertRow();
+        // newRow.setAttribute("id",row_id);
+        // newRow.insertCell().innerHTML=full_name.value;
+        // newRow.insertCell().innerHTML=email.value;
+        // newRow.insertCell().innerHTML=contact.value;
+        // newRow.insertCell().innerHTML=college.value;
+        // newRow.insertCell().innerHTML=course.value;
+        // const actionCell=newRow.insertCell()
+        // actionCell.innerHTML="<i class='fa fa-pencil-square-o edit' aria-hidden='true'></i> <i class='fa fa-trash delete' aria-hidden='true'></i>";
+        // actionCell.classList.add("action"+row_id);
+        const newCell6=document.createElement("div");
+        newCell6.innerHTML="<i class='fa fa-pencil-square-o edit' aria-hidden='true'></i> <i class='fa fa-trash delete' aria-hidden='true'></i>";
+        newCell6.setAttribute("class","td");
+        newRow.appendChild(newCell6);
         form_Data[row_id]={
             full_name:full_name.value,
             email:email.value,
@@ -190,7 +218,7 @@ submit.addEventListener('click',(e)=>{
         Delete.addEventListener("click",(e)=>{
             e.preventDefault();
             console.log(form_Data);
-            const delete_row=Delete.closest("tr");
+            const delete_row=Delete.closest(".tr");
             const delete_id=delete_row.id;
             deleteRow_id=delete_id;
             delete_modal.style.zIndex="1";
@@ -230,7 +258,7 @@ submit.addEventListener('click',(e)=>{
     edit_button.forEach((edit)=>{
         edit.addEventListener("click",(e)=>{
             e.preventDefault();
-            const edit_row=edit.closest("tr");
+            const edit_row=edit.closest(".tr");
             const edit_id=edit_row.id;
             editRow_id=edit_id;
             full_name.value=form_Data[edit_id].full_name;
