@@ -17,9 +17,10 @@ body{
 h1{
    text-align: center;
    font-size: 3rem;
-   text-shadow: 00 2px 2px #000;
-   color:  rgb(4, 4, 202);
-   margin: 0.5rem;
+   text-shadow: 0 2px 2px #000;
+   /* color:  rgb(4, 4, 202); */
+   color: #054670;
+   margin: 0.1rem;
 }
 .submit-text{
    font-size: 2.5rem;
@@ -34,7 +35,7 @@ h1{
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   margin: 2rem;
+   margin: 1rem 0 1.5rem 0;
 }
 .body-container{
    width: 100%;
@@ -44,10 +45,60 @@ h1{
 form{
     width: 51%;
     /* background-color: var(--dark-orangebg); */
-    background-color: #fff;
-    margin: auto;
+    background-color: #ffffff;
+    /* margin: auto; */
+    margin-right: 6px;
     box-shadow: 0px 0px 10px 4px;
     padding: 0;
+}
+#progressbar{
+   margin-top: 1.4rem;
+   overflow: hidden;
+   counter-reset:step;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+#progressbar li{
+   list-style-type: none;
+   text-transform: uppercase;
+   font-size: 1.1rem;
+   width: 28%;
+   float: left;
+   position: relative;
+   text-align: center;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 0.8rem;
+	color: #474545;
+	background: #a0d6fa;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+#progressbar li:after {
+	content: '';
+	width: 89%;
+   margin-left: 10px;
+	height: 2px;
+	background:#a0d6fa;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: 1; 
+}
+#progressbar li:first-child:after {
+	content: none; 
+}
+
+
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #9b59b6;
+	color:black;
 }
 .required{
    color: rgb(134, 12, 12);
@@ -69,6 +120,7 @@ h2{
    margin: 0;
    font-size: 2rem;
    text-decoration: underline;
+   text-align: center;
 }
 .form-container{
    padding: 0 1rem 1rem;
@@ -78,13 +130,16 @@ h2{
    align-items: center;
 }
 fieldset{
-   width: 75%;
-   margin: 1rem;
+   width: 85%;
+   margin:0.2rem 1rem;
    padding: 1rem;
-   display: flex;
+   /* display: flex; */
+   display: none;
    flex-direction: column;
    gap: 0.5rem;
-
+}
+.active-fieldset{
+   display: flex;
 }
 legend{
    font-size: 1.5rem;
@@ -135,6 +190,9 @@ label,.gender{
    display: flex;
    background-color: inherit;
 }
+select{
+   width: 64% !important;
+}
 .submit,.update{
    margin: 0 1rem ;
    width: 15rem;
@@ -169,39 +227,25 @@ select{
    box-shadow: 0px 0px 10px 4px;
    
 }
-.table{
-   margin: 1rem;
+table{
    background-color: #fff;
    width: 85%;
-   display: flex;
-   text-align: center;
-   justify-content: center;
-   flex-direction: column;
 }
-.tr{
-   display: grid;
-   grid-template-columns: repeat(6,1fr);
-   margin: auto;
-   width: 100%;
-}
-.th,.td{
+table,tr,th,td{
    border:1px solid #ccc;
-   /* width: 16.6%; */
 }
-
-.table{
+table{
    border-collapse: collapse;
 
 }
-.th{
-   font-size: 1.5rem;
-   padding: 0.5rem;
-}
-.td{
+th{
    font-size: 1.2rem;
 }
-.th,.td{
-   padding: 0.5rem;
+td{
+   font-size: 1rem;
+}
+th,td{
+   padding: 0.2rem;
 }
 .table-heading{
    color: black;
@@ -270,7 +314,7 @@ span{
    display: none;
 }
 
-@media screen and (max-width:1200px){
+@media screen and (max-width:100px){
    form{
       width: 80%;
    }
@@ -327,7 +371,7 @@ span{
    }
 
    fieldset{
-      width: 100%;
+      width: 90%;
    }
 }
 @media screen and (max-width:620px){

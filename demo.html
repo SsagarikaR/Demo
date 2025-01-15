@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student registration form</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="heading">
@@ -18,7 +18,12 @@
       <div class="form-container">
         <div class="global-error"></div>
         <h2>fill the form to apply for the course  <i class="fa fa-book" ></i></h2>
-        <fieldset>
+        <ul id="progressbar">
+          <li class="active">Student information</li>
+          <li>Parent information</li>
+          <li>Education information</li>
+        </ul>
+        <fieldset class="active-fieldset">
           <legend>Student information</legend>
           <div  class="input-div">
             <label for="name">Full name: <span class="required">*</span></label>
@@ -50,10 +55,10 @@
               <option disabled selected value class="City">-----select your city-----</option>
             </select>
           </div>
-          <div class="input-div">
+          <!-- <div class="input-div">
             <label for="DOB">Date of birth:</label>
             <input type="date" id="DOB" class="input-box"/>
-          </div>
+          </div> -->
           <div class="input-div gender-div">
             <div class="gender">gender: <span class="required">*</span></div>
             <div class="input-box gender-box ">
@@ -99,7 +104,7 @@
           </div >
           <div class="input-div">
             <label for="course">Course: <span class="required">*</span></label>
-            <select id="course" class="input-box require">
+            <select id="course" class="input-box require" > <!-- style="width: 64%;" -->
               <option disabled selected value>-----select a option-----</option>
               <option value="B.Tech">B.Tech</option>
               <option value="B.Pharma">B.Pharma</option>
@@ -123,7 +128,17 @@
     </form>
     <div class="table-container">
       <h2 >Students's Data</h2>
-    <div class="table"> 
+      <table>
+        <tr>
+          <th>Full name</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>College</th>
+          <th>Course</th>
+          <th>Action</th>
+        </tr>
+      </table>
+    <!-- <div class="table"> 
       <div class="tr">
         <div class="th">Full name</div>
         <div class="th">Email</div>
@@ -132,7 +147,7 @@
         <div class="th">Course</div>
         <div class="th">Action</div>
       </div>
-    </div>
+    </div> -->
     </div>
   </div>
   <div class="delete-modal"> 
