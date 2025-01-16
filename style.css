@@ -44,7 +44,7 @@ h1{
    justify-content: center;
 }
 form{
-    width: 50%;
+    width: 49%;
     /* background-color: var(--dark-orangebg); */
     background-color: #ffffff;
     /* margin: auto; */
@@ -59,7 +59,7 @@ form{
    justify-content: center;
    align-items: center;
    counter-reset:step;
-   
+   padding-left: 0;
 }
 #progressbar li{
    list-style-type: none;
