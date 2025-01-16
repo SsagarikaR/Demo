@@ -10,32 +10,35 @@
   </head>
   <body>
     <div class="heading">
-      <h1>Student Registration Form  with jquery</h1>
+      <!-- <h1>Student Registration Form </h1> -->
       <h2 class="submit-text"></h2>
     </div>
     <div class="body-container">
-    <form onsubmit="return ">
+    <form>
       <div class="form-container">
-        <div class="global-error"></div>
         <h2>fill the form to apply for the course  <i class="fa fa-book" ></i></h2>
         <ul id="progressbar">
-          <li class="active">Student information</li>
-          <li>Parent information</li>
-          <li>Education information</li>
+          <li class="active " id="1">Student information</li>
+          <li  id="2">Education information</li>
+          <li  id="3">Additional information</li>
         </ul>
         <fieldset class="active-fieldset">
           <legend>Student information</legend>
-          <div  class="input-div">
-            <label for="name">Full name: <span class="required">*</span></label>
-            <input type="text" id="name" class="input-box require"/>
+          <div  class="input-div require-div">
+            <label for="full_name">Full name: <span class="required">*</span></label>
+            <input type="text" id="full_name" class="input-box require"/>
           </div>
-          <div class="input-div">
+          <div class="input-div require-div">
             <label for="email">Email: <span class="required">*</span></label>
             <input type="text" id="email" class="input-box email require"/>
           </div class="input-div">
-          <div class="input-div">
+          <div class="input-div require-div">
             <label for="contact">Contact: <span class="required">*</span></label>
             <input type="text" id="contact" class="input-box contact require"/>
+          </div>
+          <div class="input-div require-div">
+            <label for="password">Password: <span class="required">*</span></label>
+            <input type="text" id="password" class="input-box password require"/>
           </div>
           <div class="input-div">
             <label for="State">State:</label>
@@ -55,42 +58,13 @@
               <option disabled selected value class="City">-----select your city-----</option>
             </select>
           </div>
-          <!-- <div class="input-div">
-            <label for="DOB">Date of birth:</label>
-            <input type="date" id="DOB" class="input-box"/>
-          </div> -->
-          <div class="input-div gender-div">
-            <div class="gender">gender: <span class="required">*</span></div>
-            <div class="input-box gender-box ">
-              <div class="male"> 
-                <label for="male" > Male</label>
-                <input type="radio" name="gender" id="male" />
-              </div>
-              <div class="female">
-                <label for="female" >Female</label>
-                <input type="radio" name="gender" id="female" />
-              </div>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Parents information</legend>
-          <div class="input-div">
-            <label for="fathers-name">Father's name: <span class="required">*</span></label>
-            <input type="text" id="fathers-name" class="input-box require"/>
-          </div>
-          <div class="input-div"> 
-            <label for="Pcontact">Contact: <span class="required">*</span></label>
-            <input type="text" id="Pcontact" class="input-box  contact require"/>
-          </div>
-          <div class="input-div">
-            <label for="Acontact">Alternate contact:</label>
-            <input type="text" id="Acontact" class="input-box"/>
+          <div class="button-div">
+            <button class="next">Next</button>
           </div>
         </fieldset>
         <fieldset>
           <legend>Education information</legend>
-          <div class="input-div">
+          <div class="input-div require-div">
             <label for="name">College: <span class="required">*</span></label>
             <input list="college" id="College" name="college" class="input-box require"/>
             <datalist id="college" class="input-box" >
@@ -102,7 +76,7 @@
               <option value="ITER">ITER</option>
             </datalist>
           </div >
-          <div class="input-div">
+          <div class="input-div require-div">
             <label for="course">Course: <span class="required">*</span></label>
             <select id="course" class="input-box require" > <!-- style="width: 64%;" -->
               <option disabled selected value>-----select a option-----</option>
@@ -121,9 +95,66 @@
             <label for="end-date">End date:</label>
             <input type="date" name="end-date" id="end-date" class="input-box"/>
           </div>
+          <div class="button-div">
+            <button class="prev">prev</button>
+            <button class="next">Next</button>
+          </div>
         </fieldset>
-        <button  class="submit">Submit</button>
-        <button class="update">Update</button>
+        <fieldset>
+          <legend>Additional information</legend>
+          <div class="input-div">
+            <label for="fathers-name">Father's name: </label>
+            <input type="text" id="fathers-name" class="input-box "/>
+          </div>
+          <div class="input-div">
+            <label for="Acontact">Alternate contact:</label>
+            <input type="text" id="Acontact" class="input-box"/>
+          </div>
+          <div class="input-div">
+            <label for="DOB">Date of birth:</label>
+            <input type="date" id="DOB" class="input-box"/>
+          </div>
+          <div class="input-div gender-div">
+            <div class="gender">gender:</div>
+            <div class="input-box gender-box ">
+              <div class="male"> 
+                <label for="male" > Male</label>
+                <input type="radio" name="gender" id="male" />
+              </div>
+              <div class="female">
+                <label for="female" >Female</label>
+                <input type="radio" name="gender" id="female" />
+              </div>
+            </div>
+          </div>
+          <div class="button-div">
+            <button class="prev">prev</button>
+            <button class="submit">Submit</button>
+          </div>
+        </fieldset>
+      </div>
+      <div class="preview_modal">
+          <div class="preview_heading">preview</div>
+          <div class="preview_container">
+            <div class="preview_row"><span class="key_span">Full name:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Email:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Contact:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Password:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">State:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">City:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">College:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Course:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Start date:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">End date:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Father's name:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Alternate contact:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Date of birth:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Gender:</span> <span class="value_span">Email</span></div>
+          </div>
+          <div class="preview_buttons">
+            <button class="cancel_submit">Cancel</button>
+            <button class="confirm_submit">Confirm</button>
+          </div>
       </div>
     </form>
     <div class="table-container">
@@ -138,16 +169,6 @@
           <th>Action</th>
         </tr>
       </table>
-    <!-- <div class="table"> 
-      <div class="tr">
-        <div class="th">Full name</div>
-        <div class="th">Email</div>
-        <div class="th">Contact</div>
-        <div class="th">College</div>
-        <div class="th">Course</div>
-        <div class="th">Action</div>
-      </div>
-    </div> -->
     </div>
   </div>
   <div class="delete-modal"> 
