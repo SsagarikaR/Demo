@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
-  <body>
+  <body class="body">
     <div class="heading">
       <!-- <h1>Student Registration Form </h1> -->
       <h2 class="submit-text"></h2>
@@ -42,8 +42,8 @@
           </div>
           <div class="input-div">
             <label for="State">State:</label>
-            <select id="State" class="input-box">
-              <option disabled selected value>-----select your state-----</option>
+            <select id="state" class="input-box">
+              <option disabled selected value>-----Select your state-----</option>
               <option value="AndhraPradesh">Andhra Pradesh</option>
               <option value="ArunachalPradesh">Arunachal Pradesh</option>
               <option value="Assam">Assam</option>
@@ -54,11 +54,11 @@
           </div>
           <div class="input-div">
             <label for="City">City</label>
-            <select id="City" class="input-box">
+            <select id="city" class="input-box">
               <option disabled selected value class="City">-----select your city-----</option>
             </select>
           </div>
-          <div class="button-div">
+          <div class="first-button-div">
             <button class="next">Next</button>
           </div>
         </fieldset>
@@ -67,7 +67,7 @@
           <div class="input-div require-div">
             <label for="name">College: <span class="required">*</span></label>
             <input list="college" id="College" name="college" class="input-box require"/>
-            <datalist id="college" class="input-box" >
+            <datalist id="college"  >
               <option value="DRIEMS">DRIEMS</option>
               <option value="Silicon">Silicon</option>
               <option value="KIIT">KIIT</option>
@@ -79,7 +79,7 @@
           <div class="input-div require-div">
             <label for="course">Course: <span class="required">*</span></label>
             <select id="course" class="input-box require" > <!-- style="width: 64%;" -->
-              <option disabled selected value>-----select a option-----</option>
+              <option disabled selected value>-----Select a option-----</option>
               <option value="B.Tech">B.Tech</option>
               <option value="B.Pharma">B.Pharma</option>
               <option value="Nursing">Nursing</option>
@@ -89,14 +89,14 @@
           </div>
           <div class="input-div">
             <label for="start-date">Start date:</label>
-            <input type="date" name="start-date" id="start-date" class="input-box"/>
+            <input type="date" name="start-date" id="start_date" class="input-box"/>
           </div>
           <div class="input-div">
             <label for="end-date">End date:</label>
-            <input type="date" name="end-date" id="end-date" class="input-box"/>
+            <input type="date" name="end-date" id="end_date" class="input-box"/>
           </div>
           <div class="button-div">
-            <button class="prev">prev</button>
+            <button class="prev">Prev</button>
             <button class="next">Next</button>
           </div>
         </fieldset>
@@ -104,7 +104,7 @@
           <legend>Additional information</legend>
           <div class="input-div">
             <label for="fathers-name">Father's name: </label>
-            <input type="text" id="fathers-name" class="input-box "/>
+            <input type="text" id="fathers_name" class="input-box "/>
           </div>
           <div class="input-div">
             <label for="Acontact">Alternate contact:</label>
@@ -115,8 +115,8 @@
             <input type="date" id="DOB" class="input-box"/>
           </div>
           <div class="input-div gender-div">
-            <div class="gender">gender:</div>
-            <div class="input-box gender-box ">
+            <div class="gender">Gender:</div>
+            <div class="input-box gender-box " id="gender">
               <div class="male"> 
                 <label for="male" > Male</label>
                 <input type="radio" name="gender" id="male" />
@@ -128,28 +128,30 @@
             </div>
           </div>
           <div class="button-div">
-            <button class="prev">prev</button>
+            <button class="prev">Prev</button>
             <button class="submit">Submit</button>
+            <button class="update">Update</button>
           </div>
         </fieldset>
       </div>
       <div class="preview_modal">
-          <div class="preview_heading">preview</div>
+          <div class="preview_heading">Preview</div>
           <div class="preview_container">
-            <div class="preview_row"><span class="key_span">Full name:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Email:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Contact:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Password:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">State:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">City:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">College:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Course:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Start date:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">End date:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Father's name:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Alternate contact:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Date of birth:</span> <span class="value_span">Email</span></div>
-            <div class="preview_row"><span class="key_span">Gender:</span> <span class="value_span">Email</span></div>
+            <div class="preview_row"><span class="key_span">Full name:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Email:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Contact:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Password:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">State:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">City:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">College:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Course:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Start date:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">End date:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Father's name:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Alternate contact:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Date of birth:</span> <span class="value_span"></span></div>
+            <div class="preview_row"><span class="key_span">Gender:</span> <span class="value_span"></span></div>
+
           </div>
           <div class="preview_buttons">
             <button class="cancel_submit">Cancel</button>
@@ -172,7 +174,7 @@
     </div>
   </div>
   <div class="delete-modal"> 
-    <div class="delete-message">Write "<span>Delete</span>" to delete this field</div>
+    <div class="delete-message">Type this field's <span>password</span> to delete this field</div>
     <input type="text" class="delete-input">
     <div class="delete-error">Wrong input</div>
     <div class="delete-action">

@@ -1,12 +1,14 @@
 :root{
-   --body-bg:linear-gradient(135deg,#71b7e6,#9b59b6);
+   --body-bg:linear-gradient(#71b7e6,#9b59b6);
 }
 body{
    min-width: 100vw;
-   min-height: 100vh;
+   height: 100vh;
    background:var(--body-bg);
    display: flex;
    flex-direction: column;
+   /* background-repeat: no-repeat;  */
+   background-size: cover;
    justify-content: center;
    align-items: center;
    padding: 0;
@@ -16,11 +18,11 @@ body{
 
 h1{
    text-align: center;
-   font-size: 3rem;
+   font-size: 4rem;
    text-shadow: 0 2px 2px #000;
    /* color:  rgb(4, 4, 202); */
-   color: #9b59b6;
-   margin: 0.1rem;
+   color: #045891;
+   margin: 0 0 1.5rem;
 }
 .submit-text{
    font-size: 2.5rem;
@@ -39,19 +41,28 @@ h1{
 }
 .body-container{
    width: 100%;
+   height: 70% !important;
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+   column-gap: 2rem;
+   row-gap: 1.3rem;
+   height: 100%;
 }
-form{
-    width: 49%;
-    /* background-color: var(--dark-orangebg); */
-    background-color: #ffffff;
-    /* margin: auto; */
-    margin-right: 6px;
-    box-shadow: 0px 0px 10px 4px;
-    padding: 0;
+@media screen and (max-width:750px){
+   /* body{
+      justify-content: start;
+      min-height: 100vh !important;
+   }
+   .body-container{
+      max-height: 100% !important;
+   } */
+   h1{
+      margin-top: 1rem;
+      margin-bottom: 0.3rem;
+   }
 }
+/* ------------------------PROGRESS BAR------------------------ */
 #progressbar{
    margin-top: 1.4rem;
    overflow: hidden;
@@ -64,7 +75,7 @@ form{
 #progressbar li{
    list-style-type: none;
    text-transform: uppercase;
-   font-size: 1.1rem;
+   font-size: 1.3rem;
    width: 28%;
    float: left;
    position: relative;
@@ -73,10 +84,10 @@ form{
 #progressbar li:before {
 	content: counter(step);
 	counter-increment: step;
-	width: 20px;
-	line-height: 20px;
+	width: 25px;
+	line-height: 25px;
 	display: block;
-	font-size: 0.9rem;
+	font-size: 1rem;
    font-weight: bold;
 	color: #000000;
 	background: #bcd6e7;
@@ -86,51 +97,68 @@ form{
 #progressbar li:after {
 	content: '';
 	width: 89%;
-   margin-left: 10px;
+   margin-left: 13px;
 	height: 2px;
 	background:#bcd6e7;
 	position: absolute;
 	left: -50%;
 	top: 9px;
-	/* z-index: 1;  */
 }
 #progressbar li:first-child:after {
 	content: none; 
 }
-
-
 #progressbar li.active:before,  #progressbar li.active:after{
 	background: green;
 	color:black;
 }
-@media screen and(max-width:650px){
+@media screen and (max-width:750px){
    #progressbar{
       width: 100%;
       column-gap: 2rem;
    }
-   #progressbat li{
-      width: 33.33%;
+   #progressbar li{
+      font-size: 1.2rem;
+   }
+   #progressbar li:before {
+      width: 60px;
+   }
+   #progressbar li:after {
+      margin-left: 0;
+      width: 100%;
    }
 }
+@media screen and (max-width:500px) {
+   #progressbar li{
+      font-size: 0.9rem;
+   }
+}
+/* ------------------Dynamic messages------------------ */
 .required{
    color: rgb(134, 12, 12);
 }
-.global-error{
-   padding: 0.5rem 1rem 0;
-   font-size: 1.7rem;
-   color: rgb(134, 12, 12);
-   font-weight: 600;
-}
 .error{
-   font-size:1.2rem;
+   font-size:1.3rem;
    color: rgb(134, 12, 12);
-   float: right;
-   padding-right: 2rem;
+   padding-left: 30%;
+}
+@media screen and (max-width:500px){
+   /* .error{
+      padding-left: 2rem;
+   } */
+}
+
+/* ------------------FORM------------------ */
+form{
+   width: 48%;
+   background-color: #ffffff;
+   margin-right: 6px;
+   box-shadow: 0px 0px 10px 4px;
+   padding: 0;
 }
 h2{
    padding: 0.5rem 1rem 0;
    margin: 0;
-   font-size: 2rem;
+   font-size: 2.5rem;
    text-decoration: underline;
    text-align: center;
 }
@@ -154,11 +182,11 @@ fieldset{
    display: flex;
 }
 legend{
-   font-size: 1.5rem;
+   font-size: 2rem;
    font-weight: 600;
 }
 label,.gender{
-   font-size: 1.5rem;
+   font-size: 1.8rem;
 }
 .input-div{ 
    width: 100%;
@@ -172,11 +200,10 @@ label,.gender{
    padding: 0.6rem;
    width: 60%;
    outline: none;
-   font-size: 1.1rem;
+   font-size: 1.3rem;
    border-radius: 0.6rem;
    border: 1px solid #ccc !important;
    border-bottom: 2px ;
-   /* background-color: rgb(212, 205, 205); */
    border: none;
 }
 .gender-box{
@@ -205,25 +232,84 @@ input[type="radio"]{
    display: flex;
    background-color: inherit;
 }
-
-  
-.button-div{
+@media screen and (max-width:1200px){
+   form{
+      width: 80%;
+   }
+   fieldset{
+      width: 80%;
+   }
+   .male,.female{
+      width: 50%;
+   }
+   .body-container{
+      justify-content: center;
+      align-items: center;
+   }
+}
+@media screen  and (max-width:750px){
+   form{
+      width: 85%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: none;
+   }
+   .table-container{
+      width: 85%;
+   }
+   legend{
+      font-size: 1.7rem;
+   }
+   h1{
+      font-size: 2.8rem;
+   }
+   h2{
+      font-size: 1.8rem;
+      padding: 0 0.5rem 1rem;
+   }
+   .form-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+   }
+   label,.gender{
+      font-size: 1.7rem;
+   }
+   fieldset{
+      width: 90%;
+   }
+}
+@media screen  and (max-width:500px){
+   label,.gender{
+      font-size: 1.5rem;
+   }
+}
+/* ------------------FIELDSET BUTTONS------------------ */
+.first-button-div{
    display: flex;
    width: 100%;
    justify-content: center;
 }
+.button-div{
+   display: flex;
+   width: 100%;
+   justify-content: space-between;
+}
 
-.next,.prev,.submit,.preview{
+.next,.prev,.submit,.update{
    background: linear-gradient(135deg,#71b7e6,#9b59b6);
    border-radius: 0.5rem;
    outline: none;
    border:black;
    box-shadow: 0 0 3px 4px #524949;
-   padding: 8px ;
+   padding: 10px ;
    width: 30%;
    margin: 0.6rem 0.5rem 0 ;
    cursor: pointer;
-   font-size: 1.2rem;
+   font-size: 1.4rem;
    font-weight: 600;
 }
 .next,.submit,.preview{
@@ -232,12 +318,18 @@ input[type="radio"]{
 .prev{
    background: linear-gradient(-135deg,#71b7e6,#9b59b6);
 }
-.next:hover,.prev:hover,.submit:hover,.preview:hover{
+.next:hover,.prev:hover,.submit:hover,.update:hover{
    background: linear-gradient(-135deg,#71b7e6,#9b59b6);
    background-color: rgb(10, 10, 124);
 }
 .prev:hover{
     background: linear-gradient(135deg,#71b7e6,#9b59b6);
+}
+.update{
+   display: none;
+}
+@media screen {
+   
 }
 /* -----------------------PREVIEW----------------------- */
 .preview_modal{
@@ -258,6 +350,7 @@ input[type="radio"]{
    font-weight:600;
    text-decoration: underline;
    height: 3rem;
+   margin-bottom: 1rem;
 }
 .preview_row{
    width: 100%;
@@ -265,15 +358,15 @@ input[type="radio"]{
 }
 .key_span{
    width: 30%;
-   font-size: 1.2rem;
+   font-size: 1.4rem;
 }
 .value_span{
    width: 40%;
-   height: 1.2rem;
+   height: 1.4rem;
    border: 2px solid #ccc;
    text-align: center;
    padding: 0.2rem;
-   font-size: 1rem;
+   font-size: 1.2rem;
 }
 .preview_container{
    display: flex;
@@ -321,9 +414,6 @@ select{
    width: 64% !important;
    background: #fff;
 }
-.update{
-   display: none;
-}
 .table-container{
    width: 45%;
    display: flex;
@@ -331,7 +421,7 @@ select{
    align-items: center;
    background-color: #fff;
    margin-right: 2rem;
-   height: 37.5rem;
+   min-height: 35rem; 
    box-shadow: 0px 0px 10px 4px;
    
 }
@@ -346,12 +436,12 @@ table{
    border-collapse: collapse;
 
 }
-th{
-   font-size: 1.2rem;
+th,td{
+   font-size: 1.4rem;
 }
-td{
+/* td{
    font-size: 0.9rem;
-}
+} */
 th,td{
    padding: 0.2rem;
 }
@@ -365,6 +455,20 @@ th,td{
    color: blue;
    cursor: pointer;
 }
+@media screen and (max-width:1200px){
+   .table-container{
+      height: 38rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+   }
+   .table-container{
+      width: 76%;
+      margin-right: 0;
+      margin-top: 0.5rem;
+   }
+   
+}
+/* ------------------DELETE MODAL------------------ */
 .delete-modal{
    background-color: #fff;
    position: fixed;
@@ -380,9 +484,6 @@ th,td{
    align-items: center;
    box-shadow: 0 0 2px 2px #000;
 }
-/* span{
-   color: rgb(134, 12, 12);
-} */
 .delete-input{
    padding: 4px;
    margin: 6px 0 2px;
@@ -422,63 +523,8 @@ th,td{
    display: none;
 }
 
-@media screen and (max-width:1000px){
-   form{
-      width: 80%;
-   }
-   fieldset{
-      width: 80%;
-   }
-   .male,.female{
-      width: 50%;
-   }
-   .body-container{
-      justify-content: center;
-      align-items: center;
-   }
-   .table-container{
-      width: 76%;
-      margin-right: 0;
-      margin-top: 0.5rem;
-   }
-   
-   th,td{
-      font-size: 1.2rem;
-   }
-}
 
-@media screen  and (max-width:700px){
-   
-   form{
-      width: 85%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: none;
-   }
-   .table-container{
-      width: 85%;
-   }
-   
-   h1{
-      font-size: 2.8rem;
-   }
-   h2{
-      font-size: 1.8rem;
-      padding: 0 0.5rem 1rem;
-   }
-   .form-container{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-   }
 
-   fieldset{
-      width: 90%;
-   }
-}
 @media screen and (max-width:620px){
    th,td{
       padding: 0.2rem;
