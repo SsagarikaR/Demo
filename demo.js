@@ -4,6 +4,7 @@
     const next_button = $(".next");
     const prev_button = $(".prev");
     const submit_button = $(".submit");
+    const toastBox=$("#toastBox");
     const name = $("#full_name");
     const email = $("#email");
     const contact = $("#contact");
@@ -28,7 +29,10 @@
     const preview_modal = $(".preview_modal");
     const table_container = $(".table-container");
     const body_container=$(".body-container");
-    const preview_field = $(".value_span");
+    const preview_email = $(".preview_email");
+    const preview_contact = $(".preview_contact");
+    const preview_college = $(".preview_college");
+    const preview_course = $(".preview_course");
     const delete_modal=$(".delete-modal");
     const delete_cancel=$(".delete-cancel");
     const delete_confirm=$(".delete-confirm");
@@ -37,10 +41,10 @@
     const update_button=$(".update")
     const input=$(".input-box");
     console.log(input);
-    let dataIndex = 0; //to conncet the row and form key
+    // let dataIndex = 4; //to conncet the row and form key
     let stepIndex = 1;
-    let updateRow_id;
-    const form_Data = {};
+    const form_Data = JSON.parse(localStorage.getItem("storedData"));
+    console.log(form_Data);
     const city = {
       AndhraPradesh: ["Vijaywada", "Tirupati", "Anantapur"],
       ArunachalPradesh: ["Namsal", "Roing", "Ziro"],
@@ -48,7 +52,18 @@
       Bihar: ["Patna", "Gaya", "Bhagalpur"],
       Odisha: ["Bhubaneswar", "Cuttack", "Puri"],
     };
-
+    $.each(form_Data,function(key,value){
+      // console.log(value);
+      table.append(`<tr id=${key}>
+        <td>${value.full_name}</td>
+        <td>${value.email}</td>
+        <td>${value.contact}</td>
+        <td>${value.College}</td>
+        <td>${value.course}</td>
+        <td><i class='fa fa-pencil-square-o edit' aria-hidden='true'></i> <i class='fa fa-trash delete' aria-hidden='true'></i></td>
+      </tr>`);
+    })
+    let delete_button=$(".delete");
     const validation = {
       full_name: {
         require: {
@@ -85,7 +100,7 @@
       let step_id = e.target.id;
       if (stepIndex >= step_id) {
         const open_fieldset = fieldset.eq(step_id - 1);
-        // console.log(open_fieldset);
+        console.log(open_fieldset);
         const close_fieldset = fieldset.eq(stepIndex - 1);
         for (let i = stepIndex; i > step_id; i--) {
           // console.log(step.eq(i - 1), "remove class");
@@ -173,17 +188,11 @@
 
 
     submit_button.click((e) => {
-      let temp_data=[];
-      input.each((index,value)=>{
-        temp_data.push($(value).val());
-    })
-
-      //putting the data inside preview 
-      for(let i=0;i<input.length;i++){
-        preview_field.eq(i).text(temp_data[i]);
-      }
-      console.log(temp_data);
       e.preventDefault();
+      preview_email.append(`${email.val()}`)
+      preview_contact.append(`${contact.val()}`)
+      preview_college.append(`${College.val()}`)
+      preview_course.append(`${course.val()}`)
       form_container.css("z-index", "-1");
       form_container.css("opacity", "50%");
       table_container.css("z-index", "-1");
@@ -202,13 +211,14 @@
 
     submit_confirm.click(function (e) {
       e.preventDefault();
+      console.log("hello")
       let addData = true;
       require.each(function () {
         addData = errorMessage($(this), addData);
       });
       if (addData) {
-        $(".submit-text").html("your data is submitted");
-        form_Data[dataIndex] = {
+        let newRowId=Object.keys(form_Data).length+4;
+        let newRowData= {
           full_name: name.val(),
           email: email.val(),
           contact: contact.val(),
@@ -224,16 +234,22 @@
           start_date: start_date.val(),
           end_date: end_date.val(),
         };
-        table.append(`<tr id=${dataIndex}>
-                            <td>${form_Data[dataIndex].full_name}</td>
-                            <td>${form_Data[dataIndex].email}</td>
-                            <td>${form_Data[dataIndex].contact}</td>
-                            <td>${form_Data[dataIndex].College}</td>
-                            <td>${form_Data[dataIndex].course}</td>
+        form_Data[newRowId]=newRowData;
+        localStorage.setItem("storedData",JSON.stringify(form_Data));
+        // console.log(newRowId);
+        table.append(`<tr id=${newRowId}>
+                            <td>${newRowData.full_name}</td>
+                            <td>${newRowData.email}</td>
+                            <td>${newRowData.contact}</td>
+                            <td>${newRowData.College}</td>
+                            <td>${newRowData.course}</td>
                             <td><i class='fa fa-pencil-square-o edit' aria-hidden='true'></i> <i class='fa fa-trash delete' aria-hidden='true'></i></td>
                           </tr>`);
-        dataIndex++;
-
+        delete_button=$(".delete");
+        console.log(delete_button);
+        // dataIndex++;
+        stepIndex=1;
+        showToast("Successfully submitted")
         //empty all the input after submit
         $(this).find('input,select').each(function(){
           console.log($(this),"input")
@@ -242,7 +258,7 @@
         input.each((index, value) => {
           $(value).val("");
         });
-        console.log(form_Data);
+        // console.log(form_Data);
         form_container.css("z-index", "1");
         form_container.css("opacity", "100%");
         table_container.css("z-index", "1");
@@ -250,70 +266,71 @@
         preview_modal.css("display", "none");
 
         let deleteRow_id;
-        const delete_button=$(".delete");
-        delete_button.click((e)=>{
-          e.preventDefault();
-          const current_delete_button=e.target;
-          const delete_row=current_delete_button.closest("tr");
-          console.log(delete_row,"delete row")
-          deleteRow_id=delete_row.id;
-          delete_modal.css("z-index", "1");
-          delete_modal.css("display","flex");
-          body_container.css("z-ndex","-1");
-          body_container.css("opacity","50%");
-        })
-        delete_cancel.click((e)=>{
-          e.preventDefault();
-          delete_modal.css("z-index", "-1");
-          delete_modal.css("display","none");
-          body_container.css("z-ndex","1");
-          body_container.css("opacity","100%");
-        })
-        delete_confirm.click((e)=>{
-          e.preventDefault();
-          if(delete_input.val()===form_Data[deleteRow_id].password){
-            delete form_Data[deleteRow_id];
-            const delete_row=$(`#${deleteRow_id}`);
-            console.log(delete_row,form_Data,parseInt(deleteRow_id),"all data");
-            delete_row.remove();
-            delete_modal.css("z-index", "-1");
-            delete_modal.css("display","none");
-            body_container.css("z-ndex","1");
-            body_container.css("opacity","100%");
-          }
-        })
+        // const delete_button=$(".delete");
     
         //going to the first step after submission
         step.eq(1).removeClass("active");
         step.eq(2).removeClass("active");
         fieldset.eq(2).hide("2000");
         fieldset.eq(0).show("3000");
-
-        let editRow_id;
-        const edit_button=$(".edit");
-        edit_button.click((e)=>{
-          e.preventDefault();
-          const current_edit_button=e.target;
-          const edit_row=current_edit_button.closest("tr");
-          editRow_id=edit_row.id;
-          updateRow_id=editRow_id;
-          input.each((index,value)=>{
-            const current_id=$(value).attr('id');
-            $(value).val(form_Data[editRow_id][current_id]);
-          })
-          update_button.css("display","inline-block");
-          submit_button.css("display","none");
-        })
       } else {
-        $(".submit-text").html(" ");
-      }
-
-      if ($(".submit-text").text() !== "") {
-        setTimeout(function () {
-          return $(".submit-text").text("");
-        }, 5000);
       }
     });
+
+  $("table").on('click','.delete',((e)=>{
+      console.log(delete_button)
+      e.preventDefault();
+      console.log("hello")
+      const current_delete_button=e.target;
+      const delete_row=current_delete_button.closest("tr");
+      console.log(delete_row,"delete row")
+      deleteRow_id=delete_row.id;
+      delete_modal.css("z-index", "1");
+      delete_modal.css("display","flex");
+      body_container.css("z-ndex","-1");
+      body_container.css("opacity","50%");
+    }))
+
+    let updateRow_id;
+    let editRow_id;
+    const edit_button=$(".edit");
+    $("table").on('click','.edit',((e)=>{
+      e.preventDefault();
+      const current_edit_button=e.target;
+      const edit_row=current_edit_button.closest("tr");
+      editRow_id=edit_row.id;
+      updateRow_id=editRow_id;
+      input.each((index,value)=>{
+        const current_id=$(value).attr('id');
+        $(value).val(form_Data[editRow_id][current_id]);
+      })
+      update_button.css("display","inline-block");
+      submit_button.css("display","none");
+    }))
+
+    delete_cancel.click((e)=>{
+      e.preventDefault();
+      delete_modal.css("z-index", "-1");
+      delete_modal.css("display","none");
+      body_container.css("z-ndex","1");
+      body_container.css("opacity","100%");
+    })
+    
+    delete_confirm.click((e)=>{
+      e.preventDefault();
+      if(delete_input.val()===form_Data[deleteRow_id].password){
+        delete form_Data[deleteRow_id];
+        localStorage.setItem("storedData",JSON.stringify(form_Data))
+        const delete_row=$(`#${deleteRow_id}`);
+        console.log(delete_row,form_Data,parseInt(deleteRow_id),"all data");
+        delete_row.remove();
+        delete_modal.css("z-index", "-1");
+        delete_modal.css("display","none");
+        body_container.css("z-ndex","1");
+        body_container.css("opacity","100%");
+        delete_input.val("");
+      }
+    })
 
     update_button.click((e)=>{
       e.preventDefault();
@@ -324,26 +341,30 @@
       if(updateData){
         input.each((index,value)=>{
           const current_id=$(value).attr('id');
-          // console.log(form_Data[updateRow_id][current_id],"current form")
+          console.log(form_Data[updateRow_id][current_id],"current form")
           form_Data[updateRow_id][current_id]=$(value).val();
         })
         console.log(form_Data,"after update data");
         const update_row=$(`#${updateRow_id}`);
-        // console.log(update_row);
-        // console.log( update_row.children())
+        console.log(update_row);
+        console.log( update_row.children())
         // console.log( update_row.children().eq(0),"current row")
-        // console.log(form_Data[updateRow_id].full_name,"form first name data")
+        console.log(form_Data[updateRow_id].full_name,"form first name data")
         update_row.children().eq(0).text(form_Data[updateRow_id].full_name)
         update_row.children().eq(1).text(form_Data[updateRow_id].email)
         update_row.children().eq(2).text(form_Data[updateRow_id].contact)
         update_row.children().eq(3).text(form_Data[updateRow_id].College)
         update_row.children().eq(4).text(form_Data[updateRow_id].course)
+        localStorage.setItem("storedData",JSON.stringify(form_Data));
+        update_button.css("display","none");
+        submit_button.css("display","inline-block");
 
         //going to the first step after submission
         step.eq(1).removeClass("active");
         step.eq(2).removeClass("active");
         fieldset.eq(2).hide("2000");
         fieldset.eq(0).show("3000");
+        showToast("Successfully updated")
 
         //empty all the input after submit
         $(this).find('input,select').each(function(){
@@ -422,6 +443,15 @@
     function validPassword(value) {
       const password_regexx = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
       return password_regexx.test(value);
+    }
+
+    function showToast(message){
+      console.log("toast");
+      // <i class="fa-solid fa-check"></i>
+      toastBox.append(`<div class="toast">  ${message}</div>`)
+      setTimeout(()=>{
+        $(".toast").remove();
+      },5000)
     }
   });
 })();

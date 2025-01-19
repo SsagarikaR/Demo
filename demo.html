@@ -11,7 +11,8 @@
   <body class="body">
     <div class="heading">
       <!-- <h1>Student Registration Form </h1> -->
-      <h2 class="submit-text"></h2>
+      <!-- <h2 class="submit-text"></h2> -->
+       <div id="toastBox"></div>
     </div>
     <div class="body-container">
     <form>
@@ -135,23 +136,17 @@
         </fieldset>
       </div>
       <div class="preview_modal">
-          <div class="preview_heading">Preview</div>
+          <div class="preview_heading">
+            <div class="preview_image_container">
+              <img alt="preview_image" class="preview_image" src="./utils/Screenshot from 2025-01-19 16-56-16.png"/>
+            </div>
+            <div class="preview_name"></div>
+          </div>
           <div class="preview_container">
-            <div class="preview_row"><span class="key_span">Full name:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Email:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Contact:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Password:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">State:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">City:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">College:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Course:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Start date:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">End date:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Father's name:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Alternate contact:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Date of birth:</span> <span class="value_span"></span></div>
-            <div class="preview_row"><span class="key_span">Gender:</span> <span class="value_span"></span></div>
-
+            <div class=" preview_row"><img class="icon" src="./utils//gmail.png" alt="" srcset=""><div class="preview_email"></div></div>
+            <div class=" preview_row"><img class="icon" src="./utils/phone-call.png" alt="" srcset=""><div class="preview_contact"></div></div>
+            <div class=" preview_row"><img class="icon" src="./utils/college.png" alt="" srcset=""><div class="preview_college"></div></div>
+            <div class=" preview_row"><img class="icon" src="./utils/online-learning.png" alt="" srcset=""><div class="preview_course"></div></div>
           </div>
           <div class="preview_buttons">
             <button class="cancel_submit">Cancel</button>
