@@ -11,7 +11,6 @@
   <body class="body">
     <div class="heading">
       <!-- <h1>Student Registration Form </h1> -->
-      <!-- <h2 class="submit-text"></h2> -->
        <div id="toastBox"></div>
     </div>
     <div class="body-container">
@@ -56,7 +55,7 @@
           <div class="input-div">
             <label for="City">City</label>
             <select id="city" class="input-box">
-              <option disabled selected value class="City">-----select your city-----</option>
+              <option disabled selected value class="City">-----Select your city-----</option>
             </select>
           </div>
           <div class="first-button-div">
@@ -135,24 +134,6 @@
           </div>
         </fieldset>
       </div>
-      <div class="preview_modal">
-          <div class="preview_heading">
-            <div class="preview_image_container">
-              <img alt="preview_image" class="preview_image" src="./utils/Screenshot from 2025-01-19 16-56-16.png"/>
-            </div>
-            <div class="preview_name"></div>
-          </div>
-          <div class="preview_container">
-            <div class=" preview_row"><img class="icon" src="./utils//gmail.png" alt="" srcset=""><div class="preview_email"></div></div>
-            <div class=" preview_row"><img class="icon" src="./utils/phone-call.png" alt="" srcset=""><div class="preview_contact"></div></div>
-            <div class=" preview_row"><img class="icon" src="./utils/college.png" alt="" srcset=""><div class="preview_college"></div></div>
-            <div class=" preview_row"><img class="icon" src="./utils/online-learning.png" alt="" srcset=""><div class="preview_course"></div></div>
-          </div>
-          <div class="preview_buttons">
-            <button class="cancel_submit">Cancel</button>
-            <button class="confirm_submit">Confirm</button>
-          </div>
-      </div>
     </form>
     <div class="table-container">
       <h2 >Students's Data</h2>
@@ -167,8 +148,26 @@
         </tr>
       </table>
     </div>
+    </div>
+    <div class="preview_modal">
+      <div class="preview_heading">
+        <div class="preview_image_container">
+          <img alt="preview_image" class="preview_image" src="./utils/Screenshot from 2025-01-20 10-37-13.png"/>
+        </div>
+        <div class="preview_name"></div>
+      </div>
+      <div class="preview_container">
+        <div class=" preview_row"><a class="email_href"><img class="icon" src="./utils//gmail.png" alt="" srcset=""><div class="preview_email"></div></a></div>
+        <div class=" preview_row"><a class="phone_href"><img class="icon" src="./utils/phone-call.png" alt="" srcset=""><div class="preview_contact"></div></a></div>
+        <div class=" preview_row"><a  class="college_href"><img class="icon" src="./utils/college.png" alt="" srcset=""><div class="preview_college"></div></a></div>
+        <div class=" preview_row"><a class="course_href"><img class="icon" src="./utils/online-learning.png" alt="" srcset=""><div class="preview_course"></div></a></div>
+      </div>
+      <div class="preview_buttons">
+        <button class="cancel_submit">Cancel</button>
+        <button class="confirm_submit">Confirm</button>
+      </div>
   </div>
-  <div class="delete-modal"> 
+    <div class="delete-modal"> 
     <div class="delete-message">Type this field's <span>password</span> to delete this field</div>
     <input type="text" class="delete-input">
     <div class="delete-error">Wrong input</div>
@@ -177,7 +176,11 @@
       <div class="delete-confirm">Confirm</div>
     </div>
   </div>
-    <script src="./demo.js"></script>
+    <script src="./modules/tableCrud.js" type="module"></script>
+    <script src="./modules/showToast.js" type="module"></script>
+    <script src="./modules/setCity.js" type="module"></script>
+    <script src="./modules/validate.js" type="module"></script>
+    <script src="./demo.js" type="module"></script>
     
   </body>
 </html>

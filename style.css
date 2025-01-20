@@ -14,13 +14,6 @@ body{
    overflow-x: hidden;
    box-sizing: border-box;
 }
-h1{
-   text-align: center;
-   font-size: 4rem;
-   text-shadow: 0 2px 2px #000;
-   color: #045891;
-   margin: 0 0 1.5rem;
-}
  #toastBox{
    position: absolute;
    top:2rem;
@@ -30,15 +23,16 @@ h1{
    flex-direction: column;
    overflow: hidden;
    padding: 20px;
+   z-index: 2;
  }
  .toast{
+   box-shadow: 0 0 6px 2px black;
    width: 350px;
    height: 80px;
    background: #fff;
    font-weight: 500;
    margin: 15px 0;
    font-size: 1.5rem;
-   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
    display: flex;
    align-items: center;
    position: relative;
@@ -86,11 +80,32 @@ h1{
       margin-top: 1rem;
       margin-bottom: 0.3rem;
    }
+   .toast{
+      width: 300px;
+   }
 }
 @media screen and (max-width:1200px){
    body{
       height: auto;
       min-height: 100vh;
+   }
+   .small_body-container{
+      position: relative;
+      top:120px ;
+   }
+}
+@media screen and (max-width:580px){
+   h1{
+      font-size: 2.4rem;
+   }
+   h2{
+      font-size: 1.6rem;
+   }
+   .form-container{
+      width: 100%;
+   }
+   fieldset{
+      width: 83%;
    }
 }
 /* ------------------------PROGRESS BAR------------------------ */
@@ -163,6 +178,7 @@ h1{
       font-size: 0.9rem;
    }
 }
+
 /* ------------------Dynamic messages------------------ */
 .required{
    color: rgb(134, 12, 12);
@@ -173,9 +189,10 @@ h1{
    padding-left: 30%;
 }
 @media screen and (max-width:500px){
-   /* .error{
-      padding-left: 2rem;
-   } */
+   .error{
+      font-size: 1.1rem;
+      padding-right:1rem ;
+   }
 }
 
 /* ------------------FORM------------------ */
@@ -199,6 +216,7 @@ h2{
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   padding: 1rem;
 }
 fieldset{
    width: 85%;
@@ -226,7 +244,6 @@ label,.gender{
    display: inline-block;
    width: 30%;
 }
-
 .input-box{ 
    padding: 0.6rem;
    width: 60%;
@@ -257,11 +274,15 @@ input[type="radio"]{
    margin-left: 1rem;
 }
 .male label,.female label{
-   font-size: 1.2rem;
+   font-size: 1.3rem;
 }
 .gender-box{
    display: flex;
    background-color: inherit;
+}
+select{
+   width: 64% !important;
+   background: #fff;
 }
 @media screen and (max-width:1200px){
    form{
@@ -269,7 +290,7 @@ input[type="radio"]{
    }
    fieldset{
       width: 80%;
-   }
+   }  
    .male,.female{
       width: 50%;
    }
@@ -317,7 +338,17 @@ input[type="radio"]{
    label,.gender{
       font-size: 1.5rem;
    }
+   form{
+      width: 88%;
+   }
+   /* label{
+      font-size: 1.3rem;
+   } */
+   th{
+      padding: 0;
+   }
 }
+
 /* ------------------FIELDSET BUTTONS------------------ */
 .first-button-div{
    display: flex;
@@ -337,7 +368,7 @@ input[type="radio"]{
    border:black;
    box-shadow: 0 0 3px 4px #524949;
    padding: 10px ;
-   width: 30%;
+   width: 10rem;
    margin: 0.6rem 0.5rem 0 ;
    cursor: pointer;
    font-size: 1.4rem;
@@ -359,9 +390,18 @@ input[type="radio"]{
 .update{
    display: none;
 }
-@media screen {
-   
+@media screen and (max-width:600px){
+   .next,.prev,.submit,.update{
+      width: 8rem;
+   }
 }
+@media screen and (max-width:400px){
+   .next,.prev,.submit,.update{
+      width: 6rem;
+      padding: 8px;
+   }
+}
+
 /* -----------------------PREVIEW----------------------- */
 .preview_modal{
    position: fixed;
@@ -373,10 +413,14 @@ input[type="radio"]{
    width: 25rem;
    height: 26rem;
    display: none;
-   color: #fff;
    flex-direction: column;
    align-items: center;
    border-radius: 0.8rem;
+}
+a{
+   display: flex;
+   text-decoration: none;
+   color: #fff;
 }
 .preview_heading{
    font-size: 2rem;
@@ -407,7 +451,11 @@ input[type="radio"]{
    display: flex;
    align-items: center;
    justify-content: center;
-   font-size: 1.2rem;
+   font-size: 1.4rem;
+}
+.preview_row div:hover{
+   color: rgb(161, 161, 238);
+   text-decoration: underline;
 }
 .icon{
    width: 2rem;
@@ -417,6 +465,10 @@ input[type="radio"]{
    width: 10rem;
    height: 10rem;
    border-radius: 50%;
+   border: 0.5rem solid black;
+}
+.preview_name{
+   color: #fff;
 }
 .cancel_submit,.confirm_submit{
    padding: 4px 10px;
@@ -437,10 +489,9 @@ input[type="radio"]{
    background-color: rgb(15, 95, 15);
 }
 .preview_buttons{
-   /* padding: 1rem; */
    width: 100%;
    display: flex;
-   column-gap: 10rem;
+   column-gap: 8rem;
    position: absolute;
    top: 23rem;
    align-items: center;
@@ -453,10 +504,6 @@ input[type="radio"]{
    }
 }
 
-select{
-   width: 64% !important;
-   background: #fff;
-}
 .table-container{
    width: 45%;
    display: flex;
@@ -466,8 +513,8 @@ select{
    margin-right: 2rem;
    min-height: 35rem; 
    box-shadow: 0px 0px 10px 4px;
-   
 }
+.table-container h2,
 table{
    background-color: #fff;
    width: 85%;
@@ -482,11 +529,8 @@ table{
 th,td{
    font-size: 1.4rem;
 }
-/* td{
-   font-size: 0.9rem;
-} */
-th,td{
-   padding: 0.2rem;
+td,td{
+   padding: 0.4rem;
 }
 .table-heading{
    color: black;
@@ -497,6 +541,12 @@ th,td{
 .edit:hover,.delete:hover{
    color: blue;
    cursor: pointer;
+}
+@media screen and (max-width:1500px){
+   th,td{
+      font-size: 1.2rem;
+      padding: 0.4rem;
+   }
 }
 @media screen and (max-width:1200px){
    .table-container{
@@ -509,7 +559,32 @@ th,td{
       margin-right: 0;
       margin-top: 0.5rem;
    }
+   th,td{
+      font-size: 1.3rem;
+   }
    
+}
+@media screen and (max-width:700px){
+   th,td{
+      padding: 0.6rem 0.2rem;
+      font-size: 1.2rem;
+   }
+   table{
+      width: 95%;
+   }
+}
+@media screen and (max-width:490px){
+   th,td{
+      font-size:0.9rem;
+      padding: 0.2rem;
+   }
+   table{
+      width: 100%;
+   }
+   .table-container{
+      width: 75%;
+   }
+
 }
 /* ------------------DELETE MODAL------------------ */
 .delete-modal{
@@ -564,82 +639,4 @@ th,td{
    color: rgb(134, 12, 12);
    font-size:1.2rem;
    display: none;
-}
-
-
-
-@media screen and (max-width:620px){
-   th,td{
-      padding: 0.2rem;
-   }
-   th{
-      font-size: 1.3rem;
-   }
-   table{
-      width: 95%;
-   }
-}
-@media screen and (max-width:490px){
-   /* h1{
-      font-size: 1.5rem;
-   } */
-   th{
-      font-size: 1rem;
-   }
-   td{
-      font-size: 1rem;
-   }
-   form{
-      width: 88%;
-   }
-   label{
-      font-size: 1.3rem;
-   }
-   .error{
-      font-size: 1.1rem;
-      padding-right:1rem ;
-   }
-   table{
-      width: 100%;
-   }
-   .submit-text{
-      font-size: 1.8rem;
-   }
-   .table-container{
-      width: 94%;
-   }
-
-}
-@media screen and (max-width:580px){
-   h1{
-      font-size: 2.5rem;
-   }
-   h2{
-      font-size: 1.6rem;
-   }
-   fieldset{
-      width: 100%;
-   }
-}
-@media screen and (max-width:580px){
-   h1{
-      font-size: 2.4rem;
-   }
-   .form-container{
-      width: 100%;
-   }
-   fieldset{
-      width: 83%;
-   }
-}
-@media screen and (max-width:580px){
-   h1{
-      font-size: 2.4rem;
-   }
-   .form-container{
-      width: 100%;
-   }
-   fieldset{
-      width: 83%;
-   }
 }
