@@ -11,7 +11,6 @@ const openFirstStep=(function(){
         fieldset.eq(0).show("3000");
     }
     return {
-        openFirstStep
+        openFirstStep:openFirstStep
     }
 })();
-export default openFirstStep;

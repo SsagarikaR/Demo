@@ -14,4 +14,3 @@ const showToast=(function(){
 
     return {showToast};
 })();
-export default showToast;

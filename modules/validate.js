@@ -1,4 +1,5 @@
 const validateModule=(function(){
+    const require = $(".require");
     const validation = {
         full_name: {
           require: {
@@ -77,7 +78,13 @@ const validateModule=(function(){
         }
            
       };
-
+    
+    function onBlurInput(){
+      require.blur(function () {
+        // console.log(this);
+        checkError($(this));
+      });
+    }
     function checkError(current_input, addData = true){
         const parents = current_input.parents(".input-div");
         if (parents.children().eq(2)) {
@@ -95,8 +102,7 @@ const validateModule=(function(){
     };
 
     return {
-        checkError 
+        checkError : checkError,
+        onBlurInput:onBlurInput
     };
 })();
-
-export default validateModule;

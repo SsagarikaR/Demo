@@ -100,11 +100,9 @@ const tableCrud=(function(){
     }
 
     return {
-        readRow,
-        addRow,
-        deleteRow,
-        updateRow
+        readRow:readRow,
+        addRow:addRow,
+        deleteRow:deleteRow,
+        updateRow:updateRow
     };
 })();
-
-export default tableCrud;

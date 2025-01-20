@@ -9,7 +9,6 @@ const togglePreview=(function(){
     }
 
     return {
-        togglePreview
+        togglePreview:togglePreview
     }
 })()
-export default togglePreview;
