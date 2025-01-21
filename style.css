@@ -218,7 +218,7 @@ h2{
    align-items: center;
    padding: 1rem;
 }
-fieldset{
+.fieldset{
    width: 85%;
    margin:0.2rem 1rem;
    padding: 1rem;
@@ -280,7 +280,7 @@ input[type="radio"]{
    display: flex;
    background-color: inherit;
 }
-select{
+.select-field{
    width: 64% !important;
    background: #fff;
 }
@@ -288,7 +288,7 @@ select{
    form{
       width: 80%;
    }
-   fieldset{
+   .fieldset{
       width: 80%;
    }  
    .male,.female{
@@ -330,7 +330,7 @@ select{
    label,.gender{
       font-size: 1.7rem;
    }
-   fieldset{
+   .fieldset{
       width: 90%;
    }
 }
@@ -477,16 +477,16 @@ a{
    font-weight: bold;
 }
 .cancel_submit{
-   background-color: rgb(236, 42, 42);
+   background-color: #71b7e6;
 }
 .confirm_submit{
-   background-color: rgb(8, 160, 8);
+   background-color: #9b59b6 ;
 }
 .cancel_submit:hover{
-   background-color: rgb(146, 9, 9);
+   background-color: #2579b1;
 }
 .confirm_submit:hover{
-   background-color: rgb(15, 95, 15);
+   background-color: #782a97;
 }
 .preview_buttons{
    width: 100%;

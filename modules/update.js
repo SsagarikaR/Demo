@@ -1,6 +1,7 @@
 const update =(function(){
     const update_button=$(".update")
     const input=$(".input-box");
+    const select_field=$(".select_field");
     const submit_button = $(".submit");
     const require = $(".require");
     let form_Data = JSON.parse(localStorage.getItem("storedData"));
@@ -45,12 +46,14 @@ const update =(function(){
               submit_button.css("display","inline-block");
               openFirstStep.openFirstStep();
               showToast.showToast("Successfully updated");
-              stepIndex=1;
+              // stepIndex=1;
       
               //empty all the input after update
-              $(this).find('input,select').each(function(){
-                console.log($(this),"input")
-                $(this).val('');
+              input.each((index, value) => {
+                $(value).val("");
+              });
+              select_field.each((index,value)=>{
+                $(value).val("");
               })
             }
         })

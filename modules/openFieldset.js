@@ -20,12 +20,19 @@ const openFieldset=(function(){
           close_fieldset.hide("3000");
           open_fieldset.show("3000");
         }
+        if(stepIndex>=3){
+          stepIndex=1;
+        }
       });
     }
 
     function next_button_click(){
         next_button.click(function (e) {
         e.preventDefault();
+        if(stepIndex>=3){
+          stepIndex=1;
+        }
+        console.log(stepIndex);
         const parent_fieldset = $(this).parents("fieldset");
         const next_fieldset = parent_fieldset.next();
         const current_requireField = parent_fieldset.children(".require-div");
@@ -48,6 +55,9 @@ const openFieldset=(function(){
     function prev_button_click(){
         prev_button.click(function (e) {
             e.preventDefault();
+            if(stepIndex>=3){
+              stepIndex=1;
+            }
             const parent_fieldset = $(this).parents("fieldset");
             const prev_fieldset = parent_fieldset.prev();
             $("#progressbar li").eq(--stepIndex).removeClass("active");

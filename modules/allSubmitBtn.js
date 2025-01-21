@@ -18,6 +18,7 @@ const allSubmitBtn=(function(){
     const preview_course = $(".preview_course");
     const course_href=$(".course_href");
     const input=$(".input-box");
+    const select_field=$(".select-field");
     let form_Data = JSON.parse(localStorage.getItem("storedData"));
 
     function submit_button_click(){
@@ -62,9 +63,15 @@ const allSubmitBtn=(function(){
                     console.log($(this),"input")
                     $(this).val('');
                 })
+
+                //empty all input after submission
                 input.each((index, value) => {
                     $(value).val("");
                 });
+                select_field.each((index,value)=>{
+                    $(value).val("");
+                })
+
                 showToast.showToast("Successfully submitted")
                 // console.log(form_Data);
                 togglePreview.togglePreview("1","100%","none")

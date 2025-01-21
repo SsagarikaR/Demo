@@ -22,7 +22,7 @@
           <li  id="2">Education information</li>
           <li  id="3">Additional information</li>
         </ul>
-        <fieldset class="active-fieldset">
+        <fieldset class="active-fieldset fieldset">
           <legend>Student information</legend>
           <div  class="input-div require-div">
             <label for="full_name">Full name: <span class="required">*</span></label>
@@ -42,7 +42,7 @@
           </div>
           <div class="input-div">
             <label for="State">State:</label>
-            <select id="state" class="input-box">
+            <select id="state" class="input-box select-field">
               <option disabled selected value>-----Select your state-----</option>
               <option value="AndhraPradesh">Andhra Pradesh</option>
               <option value="ArunachalPradesh">Arunachal Pradesh</option>
@@ -54,7 +54,7 @@
           </div>
           <div class="input-div">
             <label for="City">City</label>
-            <select id="city" class="input-box">
+            <select id="city" class="input-box select-field">
               <option disabled selected value class="City">-----Select your city-----</option>
             </select>
           </div>
@@ -62,7 +62,7 @@
             <button class="next">Next</button>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="fieldset">
           <legend>Education information</legend>
           <div class="input-div require-div">
             <label for="name">College: <span class="required">*</span></label>
@@ -78,7 +78,7 @@
           </div >
           <div class="input-div require-div">
             <label for="course">Course: <span class="required">*</span></label>
-            <select id="course" class="input-box require" > <!-- style="width: 64%;" -->
+            <select id="course" class="input-box require select-field" > <!-- style="width: 64%;" -->
               <option disabled selected value>-----Select a option-----</option>
               <option value="B.Tech">B.Tech</option>
               <option value="B.Pharma">B.Pharma</option>
@@ -100,7 +100,7 @@
             <button class="next">Next</button>
           </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="fieldset">
           <legend>Additional information</legend>
           <div class="input-div">
             <label for="fathers-name">Father's name: </label>
@@ -187,8 +187,8 @@
     <script src="./modules/togglePreview.js"></script>
     <script src="./modules/openFirstStep.js"></script>
     <script src="./modules/showToast.js" ></script>
-    <script src="./modules/validate.js" type="module"></script>
-    <script src="./index.js" type="module"></script>
+    <script src="./modules/rmvErrOnChange.js"></script>
+    <script src="./index.js" ></script>
     
   </body>
 </html>

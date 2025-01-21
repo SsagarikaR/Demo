@@ -35,14 +35,26 @@ const validateModule=(function(){
             logic: (val) => {
               return val.trim() !== "";
             },
-            message: "Contact can't be empty",
+            message: "Contact no. can't be empty",
+          },
+          not_number:{
+            logic: (val)=>{
+              return !isNaN(val);
+            },
+            message: "Contact no. should be a number"
+          },
+          short:{
+            logic: (val)=>{
+              return val.length>=10;
+            },
+            message: "Contact no. is too short"
           },
           wrong_format: {
             logic: (val) => {
               const phone_regex = /^\d{10}$/;
               return phone_regex.test(val);
             },
-            message: "Contact format is invalid",
+            message: "Contact no. format is invalid",
           },
         },
         password: {
@@ -85,6 +97,7 @@ const validateModule=(function(){
         checkError($(this));
       });
     }
+    
     function checkError(current_input, addData = true){
         const parents = current_input.parents(".input-div");
         if (parents.children().eq(2)) {
